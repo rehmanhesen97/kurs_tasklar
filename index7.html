@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input id="input" type="text">
+        <button id="button">Add</button>
+        <button id="clear">clear</button>
+        <ul></ul>
+        <span id="span"></span>
+    </div>
+
+
+
+    <script>
+
+        let names = ['Rəhman', 'Röyal', 'Fərid',];
+        let span = document.getElementById("span")
+
+
+        function addUsers() {
+            let template = names.map(user => `<li>${user}</li>`).join('\n');
+            document.querySelector('ul').innerHTML = template;
+        }
+
+        addUsers();
+
+        let btnAdd = document.getElementById('button');
+        let input = document.getElementById('input');
+
+        btnAdd.addEventListener('click', () => {
+            names.push(input.value);
+            input.value = '';
+            addUsers();
+            if (names.length === 0) {
+
+
+                document.getElementById('clear').style.visibility = 'hidden';
+            } else {
+
+                document.getElementById('clear').style.visibility = 'visible';
+            }
+
+        });
+
+        let btnClear = document.getElementById("clear")
+
+        btnClear.addEventListener('click', () => {
+            names.pop();
+            input.value = '';
+            addUsers();
+            if (names.length === 0) {
+
+                document.getElementById('clear').style.visibility = 'hidden';
+            } else {
+
+                document.getElementById('clear').style.visibility = 'visible';
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>
